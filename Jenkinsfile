@@ -10,6 +10,13 @@ pipeline {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
             }
         }
+        stage("Building the Frontend") {
+            steps {
+                dir("TitanMarketFrontend")
+                sh "npm install"
+                sh "npm build"
+            }
+        }
         stage ("Test") {
             steps {
                 dir("TitanMarketBackend/TitanMarket.Core.Test") { 
