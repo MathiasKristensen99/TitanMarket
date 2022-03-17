@@ -14,7 +14,7 @@ pipeline {
             steps {
                 dir("TitanMarketFrontend")
                 sh "npm install"
-                sh "npm build"
+                sh "ng build"
             }
         }
         stage ("Test") {
