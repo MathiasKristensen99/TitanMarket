@@ -10,13 +10,6 @@ pipeline {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
             }
         }
-        stage("Building the Frontend") {
-            steps {
-                dir("TitanMarketFrontend")
-                sh "npm install"
-                sh "ng build"
-            }
-        }
         stage ("Test") {
             steps {
                 dir("TitanMarketBackend/TitanMarket.Core.Test") { 
@@ -33,6 +26,12 @@ pipeline {
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Core.Test/TestResults/*/coverage.cobertura.xml")]
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Domain.Test/TestResults/*/coverage.cobertura.xml")]
                 }
+            }
+        }
+        stage("Building the Frontend") {
+            steps {
+                { sh 'npm install' }
+                { sh 'npm run-script build' }
             }
         }
      }
