@@ -12,8 +12,9 @@ pipeline {
         }
         stage("Building the Frontend") {
             steps {
-                { sh 'npm install' }
-                { sh 'npm run-script build' }
+                dir("TitanMarketFrontend")
+                 sh "npm install" 
+                 sh "npm run-script build" 
             }
         }
         stage ("Test") {
