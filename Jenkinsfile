@@ -10,13 +10,6 @@ pipeline {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
             }
         }
-        stage("Building the Frontend") {
-            steps {
-                dir("TitanMarketFrontend")
-                 sh "npm install" 
-                 sh "npm run-script build" 
-            }
-        }
         stage ("Test") {
             steps {
                 dir("TitanMarketBackend/TitanMarket.Core.Test") { 
@@ -36,4 +29,10 @@ pipeline {
             }
         }
      }
+     post {
+        always {
+            sh "echo 'The pipeline has finished!'"
+            discordSend description: "Jenkins Pipeline Build", footer: "Footer Text", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: 'https://discord.com/api/webhooks/953976986844414022/aYoQH5cyXWw4ehrEoR2V-22fBxXbZyy37iUzgocXivy6Bgreq8av3vc_vflEe8ztE9b0'
+        }
+    }
 }
