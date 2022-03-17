@@ -1,0 +1,44 @@
+
+*{
+  margin:0;
+  padding:0;
+  font-family: 'poppins, sans-serif', serif;
+  box-sizing: border-box;
+}
+
+.hero{
+  background: #151824;
+  max-height: 100vh;
+  width: 100%;
+  color: #fff;
+  position: relative;
+  border-bottom-style: groove;
+  border-bottom-width: thick;
+  border-bottom-color: #b469ff;
+}
+
+.Header_Logo{
+  max-height: 88.5px;
+  max-width: 195px;
+  margin-left: -62px;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  padding: 20px 8%;
+}
+.Header_links{
+  flex: 1;
+  text-align: right;
+
+}
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  margin: 0 40-5px;
+}
+nav ul li a{
+ text-decoration: none;
+  color: #fff;
+}

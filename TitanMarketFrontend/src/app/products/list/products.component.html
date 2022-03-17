@@ -1,0 +1,42 @@
+
+<div class="product_filter_container">
+  <ul class="product_filter">
+    <li><a href="" class="product_filter_paragraph"></a> </li>
+    <li class="product_filter_listItem"><a href="" class="product_filter_listItem_text">Kategori</a> </li>
+    <li class="product_filter_listItem"><a href="" class="product_filter_listItem_text">Designer</a> </li>
+    <li class="product_filter_listItem"><a href="" class="product_filter_listItem_text">Størrelse</a> </li>
+    <li class="product_filter_listItem"><a href="" class="product_filter_listItem_text">Farve</a> </li>
+    <li class="product_filter_listItem"><a href="" class="product_filter_listItem_text">Pris</a> </li>
+    <li class="product_filter_listItem"><a href="" class="product_filter_listItem_text">Bæredygtighed</a> </li>
+  </ul>
+</div>
+
+<body class="body">
+<div class="div">
+
+
+    <ul class="miniMenu">
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Nyt</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Shop efter</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Designere</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Tøj</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Sko</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Sneakers</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Tasker</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Accessories</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Ure</a> </li>
+      <li class="miniMenu_listItem"><a href="" class="miniMenu_listItem_text">Udsalg</a> </li>
+    </ul>
+
+
+  <div class="products_display_container" *ngIf="$products | async as productList">
+    <tr class="products_display_container_tr" *ngFor="let product of productList.list">
+      <div class="products_display_container_tr_item">
+      <td class="products_display_container_tr_td">{{product.name}}</td>
+      <td class="products_display_container_tr_td">{{product.price}} KR.</td>
+      </div>
+    </tr>
+  </div>
+
+</div>
+</body>
