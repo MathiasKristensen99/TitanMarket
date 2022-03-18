@@ -2,10 +2,15 @@ pipeline {
     agent any 
     triggers { // https://www.jenkins.io/doc/book/pipeline/syntax/#triggers
         cron("0 1 * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/
-        pollSCM("H * * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/ 
+        pollSCM("/5 * * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/ 
     }
     stages {
         stage("Building the API") { 
+            when {
+                anyOf {
+                    changeset "TitanMarketBackend/**"
+                }
+            }
             steps {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
             }
