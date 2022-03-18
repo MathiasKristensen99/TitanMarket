@@ -16,6 +16,12 @@ namespace TitanMarket.DB
                 Name = "Julians hår",
                 Price = 1000000
             });
+            modelBuilder.Entity<ProductEntity>().HasData(new ProductEntity
+            {
+                Id = 2,
+                Name = "Julians yeezys",
+                Price = 200000
+            });
         }
     }
 }
