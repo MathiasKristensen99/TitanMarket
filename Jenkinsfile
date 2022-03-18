@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     triggers { // https://www.jenkins.io/doc/book/pipeline/syntax/#triggers
-        cron("0 1 * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/
+        //cron("0 1 * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/
         pollSCM("5 * * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/ 
     }
     stages {
