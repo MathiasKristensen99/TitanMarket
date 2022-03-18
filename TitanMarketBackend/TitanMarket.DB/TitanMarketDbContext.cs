@@ -20,7 +20,7 @@ namespace TitanMarket.DB
             {
                 Id = 2,
                 Name = "Julians yeezys",
-                Price = 200000
+                Price = 2000
             });
         }
     }
