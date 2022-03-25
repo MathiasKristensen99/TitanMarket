@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: "API"
+    image: "localhost:7002/titanmarket-api:${IMAGE_TAG}"
+    container_name: "${API_CONT_NAME}"
+    ports:
+      - "${API_PORT}:80"
+    
