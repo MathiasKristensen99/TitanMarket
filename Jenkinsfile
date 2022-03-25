@@ -6,11 +6,6 @@ pipeline {
     }
     stages {
         stage("Building the API") { 
-            when {
-                anyOf {
-                    changeset "TitanMarketBackend/**"
-                }
-            }
             steps {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
                 dir("TitanMarketBackend") {
