@@ -13,6 +13,10 @@ pipeline {
             }
             steps {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
+                dir("TitanMarketBackend") {
+                    sh "docker build -t TitanMarket.WebApi"
+                    sh "docker run -d -p 8081:80 --name TitanMarket TitanMarket.WebApi"
+                }
             }
         }
         stage ("Test") {
@@ -21,7 +25,6 @@ pipeline {
                     sh "dotnet add package coverlet.collector"
                     sh "dotnet test --collect:'XPlat Code Coverage'"
                 }
-                sh "docker-compose --env-file config/Test.env build api"
 
                 dir("TitanMarketBackend/TitanMarket.Domain.Test") { 
                     sh "dotnet add package coverlet.collector"
@@ -33,16 +36,6 @@ pipeline {
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Core.Test/TestResults/*/coverage.cobertura.xml")]
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Domain.Test/TestResults/*/coverage.cobertura.xml")]
                 }
-            }
-        }
-        stage("Deploy") {
-            steps {
-                sh "docker-compose --env-file config/Test.env up -d"
-            }
-        }
-        stage("Push images to registry") {
-            steps {
-                sh "docker-compose --env-file config/Test.env push"
             }
         }
      }
