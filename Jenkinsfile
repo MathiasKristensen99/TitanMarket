@@ -8,7 +8,7 @@ pipeline {
         stage("Building the API") { 
             steps {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
-                dir("TitanMarketBackend/TitanMarket.WebApi") {
+                dir("TitanMarketBackend") {
                     sh "docker build -t titanmarket.webapi ."
                     sh "docker run -d -p 8081:80 --name titanmarket titanmarket.webapi"
                 }
