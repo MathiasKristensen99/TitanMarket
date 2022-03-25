@@ -1,0 +1,10 @@
+
+<div class="container">
+  <p class="header">
+    Product description</p>
+  <input id="product-name" type="text" placeholder="Product name..." [(ngModel)]="productName">
+  <input id="product-price" type="text" placeholder="Product price..." [(ngModel)]="productPrice">
+  <button (click)="submitForSale(productName, productPrice)" class="submit-button" style="vertical-align:middle"><span>Submit for sale </span></button>
+</div>
+
+
