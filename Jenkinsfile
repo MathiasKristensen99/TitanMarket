@@ -21,6 +21,8 @@ pipeline {
                     sh "dotnet add package coverlet.collector"
                     sh "dotnet test --collect:'XPlat Code Coverage'"
                 }
+                sh "docker-compose --env-file config/Test.env build api"
+
                 dir("TitanMarketBackend/TitanMarket.Domain.Test") { 
                     sh "dotnet add package coverlet.collector"
                     sh "dotnet test --collect:'XPlat Code Coverage'"
@@ -31,6 +33,16 @@ pipeline {
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Core.Test/TestResults/*/coverage.cobertura.xml")]
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Domain.Test/TestResults/*/coverage.cobertura.xml")]
                 }
+            }
+        }
+        stage("Deploy") {
+            steps {
+                sh "docker-compose --env-file config/Test.env up -d"
+            }
+        }
+        stage("Push images to registry") {
+            steps {
+                sh "docker-compose --env-file config/Test.env push"
             }
         }
      }
