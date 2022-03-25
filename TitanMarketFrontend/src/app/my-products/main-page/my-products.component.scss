@@ -1,11 +1,39 @@
 .new-button {
-  border: none;
-  color: black;
-  padding: 1px 1pc;
-  text-align: center;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  border-radius: 4px;
+  background-color: #C4C4C4;
+  border: none;
+  color: #47476b;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 250px;
+  transition: all 0.5s;
   cursor: pointer;
-  background-color: #47476b;
+  margin: 5px;
+}
+
+.new-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.new-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.new-button:hover span {
+  padding-right: 25px;
+}
+
+.new-button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
