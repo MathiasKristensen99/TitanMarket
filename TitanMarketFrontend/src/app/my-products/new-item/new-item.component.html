@@ -1,0 +1,13 @@
+
+<div class="container">
+  <p class="header">
+    Product description</p>
+  <form [formGroup]="newProductForm" (ngSubmit)="submitForSale()">
+  <input id="productName" type="text" placeholder="Product name..." formControlName="productName">
+  <input id="productPrice" type="text" placeholder="Product price..." formControlName="productPrice">
+  <button class="submit-button" style="vertical-align:middle"
+          [disabled]="!newProductForm.valid"><span>Submit for sale </span></button>
+  </form>
+</div>
+
+
