@@ -9,12 +9,8 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
   styleUrls: ['./new-item.component.scss']
 })
 export class NewItemComponent implements OnInit {
-  newProductForm = this._fb.group({
-    productName: new FormControl('',
-      [Validators.required]),
-    productPrice: new FormControl('',
-      [Validators.required]),
-  })
+  productName: string | any;
+  productPrice: string | any;
 
   constructor(private _myProductsService: MyProductsService,
               private _fb: FormBuilder) { }
@@ -22,8 +18,7 @@ export class NewItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitForSale(){
-    const createProduct = this.newProductForm.value as CreateProduct;
-    this._myProductsService.createProduct(createProduct).subscribe();
+  submitForSale(productName: string, productPrice: number){
+    this._myProductsService.createProduct({Name:productName, Price: productPrice} as CreateProduct).subscribe();
   }
 }
