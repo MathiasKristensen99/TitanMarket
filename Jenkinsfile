@@ -9,8 +9,8 @@ pipeline {
             steps {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
                 dir("TitanMarketBackend") {
-                    sh "docker build -t TitanMarket.WebApi"
-                    sh "docker run -d -p 8081:80 --name TitanMarket TitanMarket.WebApi"
+                    sh "docker build -t titanmarket.webapi"
+                    sh "docker run -d -p 8081:80 --name titanmarket titanmarket.webapi"
                 }
             }
         }
