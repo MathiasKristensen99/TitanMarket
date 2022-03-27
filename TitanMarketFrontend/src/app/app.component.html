@@ -5,6 +5,11 @@
     <img src="https://media.discordapp.net/attachments/938791417344585738/938794673164656691/unknown.png" class="Header_Logo"  alt="Header_Logo"/>
     </a>
     <ul class="Header_links">
+      <a routerLink="auth/login" class="loginbtn"style="margin: 5px" *ngIf="!jwt else logoutTemp">Login</a>
+      <ng-template #logoutTemp>
+        <a [routerLink]="[]" (click)="logout()" style="margin: 5px">Logout</a>
+      </ng-template>
+      <li><a routerLink="auth/create/user" class="joinBtn" style="margin: 5px">Join</a></li>
       <li><a href="my-products">My page</a></li>
       <li><a href="products">Products</a></li>
       <li><a href="">Modern</a></li>

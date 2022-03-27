@@ -1,0 +1,202 @@
+.LogoContainer{
+  margin: 50px auto;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100px;
+  width: 400px;
+  background: #2F303A;;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  font-weight: bold;
+  font-family: Bungee, sans-serif;
+}
+
+.WhiteContainer{
+  flex-direction: column;
+  margin: 50px auto;
+  width: 360px;
+  height: 460+5px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+
+}
+
+.BoxDesign{
+  margin: 0;
+  width: 290px;
+  height: 40px;
+  text-align: center;
+  background: #F2F2F2;
+  border-radius: 20px;
+  border:1px;
+
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.LabelDesign{
+  margin-top: 30px;
+  font-family: Roboto, sans-serif;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.TitanLabel{
+  font-family: Bungee, sans-serif;
+  font-weight: bold;
+  color: #A38D65;
+  font-size: 80px;
+}
+.PassLabel{
+  font-family: Bungee,sans-serif;
+  font-weight: bold;
+  color: #C23838;
+  font-size: 80px;
+}
+
+.CreateButton{
+  width: 150px;
+  height: 40px;
+  background: #A38D65;
+  border-radius: 20px;
+  align-self: center;
+  margin-top: 40+5px;
+
+  text-align: center;
+  color: #FFFFFF;
+  font-family:Roboto, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+.BackButton{
+  width: 120px;
+  height: 30px;
+  background: #C23838;
+  border-radius: 20px;
+  align-self: center;
+  margin-top: 20 + 5px;
+
+
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Roboto, sans-serif;
+  color: #FFFFFF;
+}
+
+.PasswordWarning{
+  display:none;
+  color: #C23838;
+  align-self: center;
+  margin-top: 10+5px;
+  margin-bottom:-30-3px;
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%, 90%{
+    transform: translate3d(-1px, 0,0);
+  }
+  20%,80%{
+    transform: translate3d(2px,0,0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.pop-up_background{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.75);
+  position: absolute;
+  top:0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.pop-up_background-show{
+  display: flex;
+}
+
+
+
+.pop-up_container{
+  flex-direction: column;
+  width: 300px;
+  height: 180px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  text-align: center;
+
+
+}
+
+.pop-up_labelOne{
+  margin-top: 30px;
+  font-family: Roboto, sans-serif;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+}
+.pop-up_labelTwo{
+  margin-top: 15px;
+  font-family: Roboto, sans-serif;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+}
+.pop-up_button{
+  width: 150px;
+  background: #33CC33;
+  border-radius: 20px;
+  align-self: center;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Roboto, sans-serif;
+  color: #FFFFFF;
+
+}
+.GenerateButton{
+
+  width: 60px;
+  height: 20px;
+  background: #A38D65;
+  border-radius: 20px;
+  align-self: center;
+  margin-top: -20px;
+  margin-left: 200+15px;
+  margin-bottom: 5px;
+
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  font-family: Roboto, sans-serif;
+  color: #FFFFFF;
+}
+.showOreHidePassword{
+  width: 60-5px;
+  align-self: center;
+  margin-left: 80px;
+  margin-top: -20-5px;
+  border-radius: 20px;
+  color: #FFFFFF;
+  background: #C23838;
+}

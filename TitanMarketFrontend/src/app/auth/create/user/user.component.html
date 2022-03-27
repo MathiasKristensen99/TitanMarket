@@ -1,0 +1,70 @@
+
+
+<div class="LogoContainer">
+<h1 class="TitanLabel">Titan</h1>
+  <h1 class="PassLabel">Pass</h1>
+</div>
+
+<div class="WhiteContainer">
+
+  <label for="email" class="LabelDesign">Email:</label>
+  <input type="email" id="email" name="email" #email class="BoxDesign">
+  <label for="password" class="LabelDesign">Password:</label>
+  <button (click)="showPassword()" class="showOreHidePassword" id="showAndHidePassword" [textContent]="passwordField?'Hide':'Show'"></button>
+  <button class="GenerateButton" type="submit" (click)="generateRandomPassword()">Generate</button>
+  <input [type]="passwordField?'text':'password'" id="password" name="password" #plainTextPassword class="BoxDesign" (click)="HidePasswordWarning()">
+  <label for="repeatPassword" class="LabelDesign">Repeat Password:</label>
+  <input [type]="passwordField?'text':'password'" id="repeatPassword" name="repeatPassword" #plainTextRepeatPassword class="BoxDesign" (click)="HidePasswordWarning()">
+
+  <div class="PasswordWarning" id="PasswordWarningText">
+    <div>
+      Passwords are not equal!
+    </div>
+  </div>
+
+
+  <button class="CreateButton" (click)="createUser(email.value, plainTextPassword.value, plainTextRepeatPassword.value)" type ="submit" >Create</button>
+  <button class="BackButton" (click)="goBack()">Back</button>
+
+</div>
+
+
+
+<div class="pop-up_background" id="popUpBackground">
+  <div class="pop-up_container">
+    <label class="pop-up_labelOne">The User</label>
+    <label class="pop-up_labelTwo">has been created.</label>
+    <button class="pop-up_button" id="popUpContinueButton" (click)="continue()"> Continue. </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
