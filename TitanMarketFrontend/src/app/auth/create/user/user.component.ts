@@ -77,29 +77,6 @@ export class UserComponent implements OnInit {
     this._router.navigateByUrl('auth/login');
   }
 
-    generateRandomPassword(){
-      this.password='';
-      var chars = "1234567890qwertzuiopasdfghjklyxcvbnm" +
-        "QWERTZUIOPASDFGHJKLYXCVBNM!@$%&*()_+<>:{}[]";
-      var passwordLength =16;
-      for (var i=0; i< passwordLength; i++){
-        var randomNumber = Math.floor(Math.random()* chars.length);
-        this.password += chars.substring(randomNumber, randomNumber+1);
-      }
-      // @ts-ignore
-      document.getElementById("password").value = this.password
-      // @ts-ignore
-      document.getElementById("repeatPassword").value = this.password
-    }
-
-    showPassword():void{
-      if(!this.passwordField){
-        this.passwordField = 1;
-      }
-      else{
-        this.passwordField = undefined;
-      }
-    }
 
 
   }

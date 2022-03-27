@@ -59,10 +59,9 @@
         <input type="checkbox" value="remember-me"> Remember me
       </label>
     </div>
-    <button class="loginbtn" type="submit"
-            [disabled]="!loginForm.valid"style="margin: 5px">Sign in</button>
-    <button class="CreateButton" (click)="Create()">Create User</button>
-
+    <button class="w-100 btn btn-lg btn-primary" (click)="login()" type="submit"
+            [disabled]="!loginForm.valid">Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" (click)="Create()" type="submit">Create User</button>
 
     <p class="mt-5 mb-3 text-muted">&copy; 2022–2023</p>
   </form>
