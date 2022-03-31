@@ -16,6 +16,7 @@ export class AuthService {
   private authApi = environment.api + 'api/Auth'
 
   isLoggedIn$ = new BehaviorSubject<string | null>(this.getToken());
+  private loggedInUser: LoginDto | undefined;
   constructor(private _http: HttpClient) { }
 
   login(loginDto: LoginDto): Observable<TokenDto>{
@@ -24,6 +25,7 @@ export class AuthService {
         tap(token => {
           if(token && token.jwt) {
             localStorage.setItem(jwtToken, token.jwt);
+            this.loggedInUser = loginDto
             this.isLoggedIn$.next(token.jwt);
           } else {
             this.logout();
@@ -32,13 +34,16 @@ export class AuthService {
       )
   }
 
+  getLoggedInDto(){
+    return this.loggedInUser;
+  }
+
   createUser(user: User): Observable<User> {
     return this._http.post<User>(this.authApi, user)
   }
 
   getToken(): string | null {
     return localStorage.getItem(jwtToken);
-
   }
 
   logout():Observable<boolean> {
@@ -47,6 +52,4 @@ export class AuthService {
     return of(true).pipe(take(1));
     return of(true);
   }
-
-
 }

@@ -1,4 +1,18 @@
 <div>
-  <h4>my-products works!</h4>
+  <div>
+    <h2 class="table-header">Your items</h2>
+  </div>
+  <table class="w3-table w3-bordered" *ngIf="$products | async as productsList">
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let item of productsList.list">
+      <td><input><span>{{item.name}}</span></td>
+      <td><input><span>{{item.price}}</span></td>
+      <td><button (click)="saveChange(item.id, itemName.getText, itemPrice.getText)">Update</button></td>
+    </tr>
+  </table>
   <button (click)="navigateToNewItem()" class="new-button" style="vertical-align:middle"><span>Click here to sell a new item </span></button>
-</div>
+  </div>

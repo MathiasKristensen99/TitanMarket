@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Security.IServices;
 using TitanMarket.Core.IServices;
 using TitanMarket.Core.Models;
 using TitanMarket.WebApi.Dtos;
@@ -15,10 +16,12 @@ namespace TitanMarket.WebApi.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService _customerService;
+        private readonly ILoginCustomerService _loginCustomerService;
 
-        public CustomersController(ICustomerService service)
+        public CustomersController(ICustomerService service, ILoginCustomerService customerService)
         {
             _customerService = service;
+            _loginCustomerService = customerService;
         }
 
         [HttpDelete("{id}")]
@@ -26,7 +29,7 @@ namespace TitanMarket.WebApi.Controllers
         {
             return _customerService.DeleteCustomer(id);
         }
-        
+
         [HttpPut("{id:int}")]
         public ActionResult<CustomerDto> UpdateCustomer(int id, CustomerDto dto)
         {
@@ -83,6 +86,17 @@ namespace TitanMarket.WebApi.Controllers
             {
                 return StatusCode(500, e.Message);
             }
+        }
+
+        [HttpGet("{email}")]
+        public ActionResult<CustomerDto> GetCustomerByEmail(string email)
+        {
+            var customer = _loginCustomerService.GetCustomerLogin(email);
+            return Ok(new Customer
+            {
+                Id = customer.Id,
+                Email = customer.Email,
+            });
         }
 
         [HttpGet("{id:int}")]
