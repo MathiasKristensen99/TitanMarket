@@ -13,5 +13,7 @@ namespace TitanMarket.Core.IServices
 
         void DeleteProduct(int productId);
 
+        List<Product> GetProductsBySearch(string name);
+
     }
 }

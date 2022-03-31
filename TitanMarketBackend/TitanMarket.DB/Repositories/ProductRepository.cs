@@ -82,5 +82,15 @@ namespace TitanMarket.DB.Repositories
             _ctx.Products.Remove(productEntity);
             _ctx.SaveChanges();
         }
+
+        public List<Product> GetProductsBySearch(string name)
+        {
+            return _ctx.Products.Select(entity => new Product
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Price = entity.Price
+            }).Where(pr => pr.Name.Contains(name)).ToList();
+        }
     }
 }

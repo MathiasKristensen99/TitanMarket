@@ -12,5 +12,7 @@ namespace TitanMarket.Domain.IRepositories
         Product UpdateProduct(int productId, Product product);
 
         void DeleteProduct(int productId);
+        
+        List<Product> GetProductsBySearch(string name);
     }
 }

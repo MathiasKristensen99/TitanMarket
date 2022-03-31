@@ -33,5 +33,10 @@ namespace TitanMarket.Domain.Services
         {
             _productRepository.DeleteProduct(productId);
         }
+
+        public List<Product> GetProductsBySearch(string name)
+        {
+            return _productRepository.GetProductsBySearch(name);
+        }
     }
 }

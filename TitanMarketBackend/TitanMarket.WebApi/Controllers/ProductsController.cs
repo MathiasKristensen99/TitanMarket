@@ -44,6 +44,29 @@ namespace TitanMarket.WebApi.Controllers
             }
         }
 
+        [HttpGet("search/{name}")]
+        public ActionResult<ProductsDto> GetProductsFromSearch(string name)
+        {
+            try
+            {
+                var products = _productService.GetProductsBySearch(name).Select(product => new ProductDto
+                {
+                    Id = product.Id,
+                    Name = product.Name,
+                    Price = product.Price
+                }).ToList();
+
+                return Ok(new ProductsDto
+                {
+                    List = products
+                });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
         [HttpPost]
         public ActionResult<ProductDto> Create([FromBody] ProductDto productDto)
         {
