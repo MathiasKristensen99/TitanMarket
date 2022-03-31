@@ -8,7 +8,11 @@ pipeline {
         stage("Building the API") {
             when {
                 anyOf {
-                    changeset "TitanMarketBackend/**"
+                    changeset "TitanMarketBackend/TitanMarket.WebApi/**"
+                    changeset "TitanMarketBackend/TitanMarket.Domain/**"
+                    changeset "TitanMarketBackend/TitanMarket.DB/**"
+                    changeset "TitanMarketBackend/TitanMarket.Core/**"
+                    changeset "TitanMarketBackend/Security/**"
                 }
             } 
             steps {
