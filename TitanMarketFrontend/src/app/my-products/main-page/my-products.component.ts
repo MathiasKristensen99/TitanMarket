@@ -12,11 +12,8 @@ import {CreateProduct} from "../shared/create-product.model";
   styleUrls: ['./my-products.component.scss']
 })
 export class MyProductsComponent implements OnInit {
-  $products: Observable<ProductList> | null | undefined;
+  $products: Observable<ProductList> | undefined;
   selectedItem: Product | any;
-  sItem: Product | any;
-  itemName: any;
-  itemPrice: any;
 
   constructor(private _router: Router,
               private _activatedRoute:ActivatedRoute,
@@ -36,5 +33,14 @@ export class MyProductsComponent implements OnInit {
 
   saveChange(itemToUpdate: number, newName: string, newPrice: number) {
     this._myProductsService.update(itemToUpdate, {name: newName, price: newPrice} as Product).subscribe();
+  }
+
+  removeProduct(id: number) {
+    this._myProductsService.deleteProduct(id).subscribe();
+    this.refresh();
+  }
+
+  private refresh() {
+    window.location.reload();
   }
 }

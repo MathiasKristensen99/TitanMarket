@@ -21,15 +21,23 @@ export class MyProductsService {
       .post<CreateProduct>(this.productsApi, createProduct);
   }
 
-  getMyProducts(): Observable<ProductList> | null {
-    if (localStorage.length<0) {
-      return null;
-    }
-    let loggedInUser = this._authService.getLoggedInDto();
-    return this._http.get<ProductList>(this.productsApi + '/' + loggedInUser?.email);
+  getMyProducts(): Observable<ProductList>{
+    //if (localStorage.length<0) {
+    //  return null;
+    //}
+    //let loggedInUser = this._authService.getLoggedInDto();
+    return this._http.get<ProductList>(this.productsApi);
   }
 
   update(itemToUpdate: number, updatedItem: Product): Observable<Product> {
     return this._http.patch<Product>(this.productsApi + '/' + itemToUpdate, updatedItem);
+  }
+
+  getProductById(product: number): Observable<Product> {
+    return this._http.get<Product>(this.productsApi + '/'+ product)
+  }
+
+  deleteProduct(id: number): Observable<Product> {
+    return this._http.delete<Product>(this.productsApi + '/' + id);
   }
 }

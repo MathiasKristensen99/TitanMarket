@@ -4,15 +4,25 @@
   </div>
   <table class="w3-table w3-bordered" *ngIf="$products | async as productsList">
     <tr>
-      <th>Item</th>
-      <th>Price</th>
-      <th></th>
+      <th>Item | price</th>
     </tr>
-    <tr *ngFor="let item of productsList.list">
-      <td><input><span>{{item.name}}</span></td>
-      <td><input><span>{{item.price}}</span></td>
-      <td><button (click)="saveChange(item.id, itemName.getText, itemPrice.getText)">Update</button></td>
+    <li *ngFor="let item of productsList.list" [value]="item.id" #item>
+    <tr>
+      <td><input [placeholder]="item.name"><input [placeholder]="item.price"><button (click)="saveChange(item.id, item.name, item.price)">update</button>
+      <button (click)="removeProduct(item.id)">Delete</button></td>
     </tr>
+    </li>
   </table>
+
+  <div class="w3-container" *ngIf="$products | async as productsList">
+    <ul class="w3-ul w3-hoverable" *ngFor="let item of productsList.list">
+      <li>
+        Item: {{item.name}}
+        Price: {{item.price}}
+      </li>
+
+    </ul>
+  </div>
+
   <button (click)="navigateToNewItem()" class="new-button" style="vertical-align:middle"><span>Click here to sell a new item </span></button>
   </div>
