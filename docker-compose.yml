@@ -3,7 +3,7 @@ version: "3.9"
 services:
   api:
     build:
-      context: "API"
+      context: "TitanMarketBackend/TitanMarket.WebApi"
     image: "localhost:7002/titanmarket-api:${IMAGE_TAG}"
     container_name: "${API_CONT_NAME}"
     ports:
