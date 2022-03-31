@@ -8,10 +8,8 @@ pipeline {
         stage("Building the API") { 
             steps {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
-                dir("TitanMarketBackend/TitanMarket.WebApi") {
-                    sh "docker-compose --env-file config/Test.env build api"
-                    sh "docker-compose --env-file config/Test.env up -d"
-                }
+                sh "docker-compose --env-file config/Test.env build api"
+                sh "docker-compose --env-file config/Test.env up -d"
             }
         }
         stage ("Test") {
