@@ -13,9 +13,6 @@ import {Router} from "@angular/router";
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-    public password:string | undefined;
-    passwordField:any| undefined;
-    showOreHidePassword:any | undefined;
 
 
   constructor(private _authService: AuthService,
