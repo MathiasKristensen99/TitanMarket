@@ -16,5 +16,6 @@ export class MyProductsComponent implements OnInit {
 
   navigateToNewItem(){
     this._router.navigate(["new-item"],{relativeTo:this._activatedRoute});
+    //
   }
 }
