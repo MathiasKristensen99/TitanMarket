@@ -9,6 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Security\Security.csproj" />
       <ProjectReference Include="..\TitanMarket.Domain\TitanMarket.Domain.csproj" />
     </ItemGroup>
 

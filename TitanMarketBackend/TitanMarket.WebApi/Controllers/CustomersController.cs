@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using TitanMarket.Core.IServices;
+using TitanMarket.Core.Models;
+using TitanMarket.WebApi.Dtos;
+
+namespace TitanMarket.WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CustomersController : ControllerBase
+    {
+        private readonly ICustomerService _customerService;
+
+        public CustomersController(ICustomerService service)
+        {
+            _customerService = service;
+        }
+
+        [HttpDelete("{id}")]
+        public Customer Delete(int id)
+        {
+            return _customerService.DeleteCustomer(id);
+        }
+        
+        [HttpPut("{id:int}")]
+        public ActionResult<CustomerDto> UpdateCustomer(int id, CustomerDto dto)
+        {
+            if (id != dto.Id)
+            {
+                return BadRequest("It is not a match");
+            }
+
+            var customer = _customerService.UpdateCustomer(new Customer
+            {
+                Id = dto.Id,
+                Email = dto.Email
+            });
+            return Ok(dto);
+        }
+
+        [HttpPost]
+        public ActionResult<CustomerDto> CreateCustomer([FromBody] CustomerDto dto)
+        {
+            var customerFromDto = new Customer
+            {
+                Id = dto.Id,
+                Email = dto.Email
+            };
+
+            try
+            {
+                var newCustomer = _customerService.CreateCustomer(customerFromDto);
+                return Created($"https://localhost:5001/api/customers/{newCustomer.Id}", newCustomer);
+            }
+            catch (ArgumentException ae)
+            {
+                return BadRequest(ae.Message);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult<CustomersDto> GetAllCostumers()
+        {
+            try
+            {
+                var customers = _customerService.GetAllCustomers()
+                    .Select(customer => new CustomerDto
+                    {
+                        Id = customer.Id,
+                        Email = customer.Email
+                    }).ToList();
+                return Ok(new CustomersDto
+                {
+                    List = customers
+                });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+
+        [HttpGet("{id:int}")]
+        public ActionResult<CustomerDto> GetCustomerById(int id)
+        {
+            var costumer = _customerService.GetCustomerById(id);
+            return Ok(new Customer
+            {
+                Id = costumer.Id,
+                Email = costumer.Email
+            });
+        }
+    }
+}
