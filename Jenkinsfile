@@ -21,14 +21,6 @@ pipeline {
                 sh "docker-compose --env-file config/Test.env up -d"
             }
         }
-        stage("Build frontend") {
-            when {
-                changeset "TitanMarketFrontend/**"
-            }
-            steps {
-                sh "docker-compose --env-file config/Test.env build web"
-            }
-        }
         stage ("Test") {
             steps {
                 dir("TitanMarketBackend/TitanMarket.Core.Test") { 
