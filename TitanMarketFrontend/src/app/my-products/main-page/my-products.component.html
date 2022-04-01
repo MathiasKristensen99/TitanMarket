@@ -2,13 +2,13 @@
   <div>
     <h2 class="table-header">Your items</h2>
   </div>
-  <table class="w3-table w3-bordered" *ngIf="$products | async as productsList">
+  <table id="table" class="w3-table w3-bordered" *ngIf="$products | async as productsList">
     <tr>
       <th>Item | price</th>
     </tr>
     <li *ngFor="let item of productsList.list" [value]="item.id" #item>
     <tr>
-      <td><input [placeholder]="item.name"><input [placeholder]="item.price"><button (click)="saveChange(item.id, item.name, item.price)">update</button>
+      <td><input [(ngModel)]="newName" [placeholder]="item.name"><input [(ngModel)]="newPrice" [placeholder]="item.price"><button (click)="saveChange(item.id, newName, newPrice)">update</button>
       <button (click)="removeProduct(item.id)">Delete</button></td>
     </tr>
     </li>

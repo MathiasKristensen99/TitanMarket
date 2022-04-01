@@ -14,6 +14,8 @@ import {CreateProduct} from "../shared/create-product.model";
 export class MyProductsComponent implements OnInit {
   $products: Observable<ProductList> | undefined;
   selectedItem: Product | any;
+  newName: any | undefined;
+  newPrice: any | undefined;
 
   constructor(private _router: Router,
               private _activatedRoute:ActivatedRoute,
@@ -42,5 +44,10 @@ export class MyProductsComponent implements OnInit {
 
   private refresh() {
     window.location.reload();
+  }
+
+  getData(){
+    const table = document.querySelector('#table');
+
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CreateProduct} from "../shared/create-product.model";
 import {MyProductsService} from "../shared/my-products.service";
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-new-item',
@@ -13,12 +14,14 @@ export class NewItemComponent implements OnInit {
   productPrice: string | any;
 
   constructor(private _myProductsService: MyProductsService,
-              private _fb: FormBuilder) { }
+              private _fb: FormBuilder,
+              private _router: Router) { }
 
   ngOnInit(): void {
   }
 
   submitForSale(productName: string, productPrice: number){
     this._myProductsService.createProduct({Name:productName, Price: productPrice} as CreateProduct).subscribe();
+    this._router.navigateByUrl("/my-products");
   }
 }
