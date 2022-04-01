@@ -35,6 +35,7 @@ export class MyProductsComponent implements OnInit {
 
   saveChange(itemToUpdate: number, newName: string, newPrice: number) {
     this._myProductsService.update(itemToUpdate, {name: newName, price: newPrice} as Product).subscribe();
+    this.refresh();
   }
 
   removeProduct(id: number) {
