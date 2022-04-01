@@ -25,11 +25,6 @@ pipeline {
                 sh "docker-compose --env-file config/Test.env up -d"
             }
         }
-        stage("Push images to registry") {
-            steps {
-                sh "docker-compose --env-file config/Test.env push"
-            }
-        }
         stage ("Test") {
             steps {
                 dir("TitanMarketBackend/TitanMarket.Core.Test") { 
