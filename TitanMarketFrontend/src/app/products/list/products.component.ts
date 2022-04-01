@@ -21,4 +21,8 @@ export class ProductsComponent implements OnInit {
     this.$products = this._productService.getProducts()
   }
 
+  searchProducts(name: string): void {
+    this.$products = this._productService.searchProducts(name);
+  }
+
 }

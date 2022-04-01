@@ -16,4 +16,8 @@ export class ProductsService {
   getProducts(): Observable<ProductList> {
     return this._http.get<ProductList>(this.productsApi);
   }
+
+  searchProducts(name: string): Observable<ProductList> {
+    return this._http.get<ProductList>(this.productsApi + '/search/' + name);
+  }
 }
