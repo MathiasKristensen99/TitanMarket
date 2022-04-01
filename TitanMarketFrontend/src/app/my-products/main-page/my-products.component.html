@@ -14,15 +14,5 @@
     </li>
   </table>
 
-  <div class="w3-container" *ngIf="$products | async as productsList">
-    <ul class="w3-ul w3-hoverable" *ngFor="let item of productsList.list">
-      <li>
-        Item: {{item.name}}
-        Price: {{item.price}}
-      </li>
-
-    </ul>
-  </div>
-
   <button (click)="navigateToNewItem()" class="new-button" style="vertical-align:middle"><span>Click here to sell a new item </span></button>
   </div>
