@@ -18,7 +18,16 @@ pipeline {
             steps {
                 sh "dotnet build TitanMarketBackend/TitanMarket.sln"
                 sh "docker-compose --env-file config/Test.env build api"
+            }
+        }
+        stage("Deploy API") {
+            steps {
                 sh "docker-compose --env-file config/Test.env up -d"
+            }
+        }
+        stage("Push images to registry") {
+            steps {
+                sh "docker-compose --env-file config/Test.env push"
             }
         }
         stage ("Test") {
