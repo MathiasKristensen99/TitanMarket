@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./form-validation.css']
+  styleUrls: ['./res/form-validation.css']
 })
 export class CheckoutComponent implements OnInit {
 
