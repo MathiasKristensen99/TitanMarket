@@ -22,6 +22,10 @@ export class NewItemComponent implements OnInit {
 
   submitForSale(productName: string, productPrice: number){
     this._myProductsService.createProduct({Name:productName, Price: productPrice} as CreateProduct).subscribe();
+    this.back();
+  }
+
+  back(){
     this._router.navigateByUrl("/my-products");
   }
 }
