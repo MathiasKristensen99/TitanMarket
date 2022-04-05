@@ -8,4 +8,14 @@ services:
     container_name: "${API_CONT_NAME}"
     ports:
       - "${API_PORT}:80"
+  docker-registry:
+    image: "registry"
+    volumes:
+      - "registry_data:/var/lib/registry"
+    ports:
+      - "7002:5000"
+  docker-registry-ui:
+    image: "parabuzzle/craneoperator"
+    ports:
+      - "7003:80"    
     
