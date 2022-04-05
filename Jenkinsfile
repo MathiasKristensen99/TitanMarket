@@ -20,11 +20,6 @@ pipeline {
                 sh "docker-compose --env-file config/Test.env build api"
             }
         }
-        stage("Deploy API") {
-            steps {
-                sh "docker-compose --env-file config/Test.env up -d"
-            }
-        }
         stage ("Test") {
             steps {
                 dir("TitanMarketBackend/TitanMarket.Core.Test") { 
@@ -42,6 +37,26 @@ pipeline {
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Core.Test/TestResults/*/coverage.cobertura.xml")]
                     publishCoverage adapters: [coberturaAdapter("TitanMarketBackend/TitanMarket.Domain.Test/TestResults/*/coverage.cobertura.xml")]
                 }
+            }
+        }
+        stage("Clean containers") {
+            steps {
+                script {
+                    try {
+                        sh "docker-compose --env-file config/Test.env down"
+                    }
+                    finally { }
+                }
+            }
+        }
+        stage("Deploy API") {
+            steps {
+                sh "docker-compose --env-file config/Test.env up -d"
+            }
+        }
+        stage("Push images to registry") {
+            steps {
+                sh "docker-compose --env-file config/Test.env push"
             }
         }
      }

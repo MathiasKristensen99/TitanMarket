@@ -1,34 +1,11 @@
-version: '3.9'
+version: "3.9"
 
 services:
-  portainer:
-    image: portainer/portainer-ce
-    container_name: "portainer"
+  api:
+    build:
+      context: "TitanMarketBackend/TitanMarket.WebApi"
+    image: "185.51.76.36:7002/titanmarket-api:${IMAGE_TAG}"
+    container_name: "${API_CONT_NAME}"
     ports:
-      - "7001:9000"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "portainer_data:/data"
-  docker-registry:
-    image: "registry"
-    volumes:
-      - "registry_data:/var/lib/registry"
-    ports:
-      - "7002:5000"
-  docker-registry-ui:
-    image: "parabuzzle/craneoperator"
-    ports:
-      - "7003:80"
-    environment:
-      - REGISTRY_HOST=docker-registry
-      - REGISTRY_PORT=5000
-      - REGISTRY_PROTOCOL=http
-      - SSL_VERIFY=false
-      - USERNAME=admin
-      - PASSWORD=mypassword
-    depends_on:
-      - docker-registry
-
-volumes:
-  portainer_data:
-  registry_data:
+      - "${API_PORT}:80"
+    
