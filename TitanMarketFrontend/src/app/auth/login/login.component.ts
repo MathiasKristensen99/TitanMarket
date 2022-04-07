@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this._auth.login(loginDto)
       .subscribe(token => {
         if(token && token.jwt){
-          this._router.navigateByUrl('/my-products')
+          this._router.navigateByUrl('/products')
         }
         //console.log('Token: ', token);
       });

@@ -30,24 +30,23 @@
     </div>
 
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input [type]="passwordField?'text':'password'" class="form-control" id="floatingPassword"  placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
+    <div *ngIf="password && password.invalid && (password.dirty || password.touched)"
+         class="PasswordWarning">
     <div class="form-floating" *ngIf="password && password.invalid && (password.dirty || password.touched)">
       <div *ngIf="password.errors?.required">
         Password is required.
       </div>
     </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
     </div>
 
-    <button class="w-100 btn btn-lg btn-primary" (click)="login()" type="submit">Sign in</button>
-    <button class="w-100 btn btn-lg btn-primary" style="margin-top: 5px" (click)="Create()" type="submit">Create User</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit"
+            [disabled]="!loginForm.valid"
+    >Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" (click)="Create()">Create User</button>
 
 
     <p class="mt-5 mb-3 text-muted">&copy; 2022–2023</p>

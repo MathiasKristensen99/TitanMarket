@@ -21,10 +21,6 @@ body {
   align-content: center;
 }
 
-.form-signin .checkbox {
-  font-weight: 400;
-}
-
 .form-signin .form-floating:focus-within {
   z-index: 2;
 }
@@ -49,6 +45,10 @@ body {
 
 .w-100 btn btn-lg btn-primary{
   margin-bottom: 10px;
+}
+
+.w-100{
+  margin-top: 10px;
 }
 
 
