@@ -25,27 +25,16 @@
     <h1 class="h3 mb-3 fw-normal">Sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput, email" placeholder="name@example.com">
+      <input type="email" class="form-control" formControlName="email" id="floatingInput, email" placeholder="name@example.com">
       <label for="floatingInput, email">Email address</label>
     </div>
-
+  
     <div class="form-floating">
-      <input [type]="passwordField?'text':'password'" class="form-control" id="floatingPassword"  placeholder="Password">
+      <input [type]="passwordField?'text':'password'" class="form-control" id="floatingPassword" formControlName="password"  placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
-    <div *ngIf="password && password.invalid && (password.dirty || password.touched)"
-         class="PasswordWarning">
-    <div class="form-floating" *ngIf="password && password.invalid && (password.dirty || password.touched)">
-      <div *ngIf="password.errors?.required">
-        Password is required.
-      </div>
-    </div>
-    </div>
-
-    <button class="w-100 btn btn-lg btn-primary" type="submit"
-            [disabled]="!loginForm.valid"
-    >Sign in</button>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     <button class="w-100 btn btn-lg btn-primary" (click)="Create()">Create User</button>
 
 
