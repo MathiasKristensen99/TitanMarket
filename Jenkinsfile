@@ -1,9 +1,5 @@
 pipeline {
     agent any 
-    triggers { // https://www.jenkins.io/doc/book/pipeline/syntax/#triggers
-        cron("1 2 * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/
-        pollSCM("5 * * * *") // https://en.wikipedia.org/wiki/Cron + https://crontab.guru/ 
-    }
     stages {
         stage("Building the API") {
             when {
